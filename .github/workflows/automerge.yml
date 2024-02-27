@@ -13,20 +13,20 @@ env:
   MY_REPO: https://ljpalmer:${{secrets.GITHUB_TOKEN}}@github.com/ljpalmer/test_automerge.git
 
   # replace "long-lived_branch_name" with your branch name
-  MY_BRANCH: main
+  MY_BRANCH: develop
 
   # replace it with the path to master repo
   MASTER_REPO: https://github.com/ljpalmer/test_automerge.git
 
   # replace "master" with your master branch name
-  MASTER_BRANCH: develop
+  MASTER_BRANCH: main
 
 jobs:
   merge:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Merge with develop
+    - name: Merge with main
       run: |
         git clone ${{env.MY_REPO}} -b ${{env.MY_BRANCH}} tmp
         cd tmp
