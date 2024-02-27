@@ -1,29 +1,19 @@
 name: Automerge
 
 on:
-  workflow_dispatch:
-  schedule:
-    # You can setup schedule here
-    - cron: '0 0 * * *'
+  pull_request:
+    types: [closed]
 
 env:
-  # replace "github_username" with your GitHub username
-  # replace "github.com/username/repo.git" with your GitHub repo path
-  # do NOT replace ${{secrets.GITHUB_TOKEN}}, GitHub will take care of it
   MY_REPO: https://ljpalmer:${{secrets.GITHUB_TOKEN}}@github.com/ljpalmer/test_automerge.git
-
-  # replace "long-lived_branch_name" with your branch name
   MY_BRANCH: develop
-
-  # replace it with the path to master repo
   MASTER_REPO: https://github.com/ljpalmer/test_automerge.git
-
-  # replace "master" with your master branch name
   MASTER_BRANCH: main
 
 jobs:
   merge:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
     - name: Merge with main
