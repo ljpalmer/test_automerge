@@ -3,6 +3,8 @@ name: Automerge
 on:
   pull_request:
     types: [closed]
+    branches:
+      - main
 
 env:
   MY_REPO: https://ljpalmer:${{secrets.GITHUB_TOKEN}}@github.com/ljpalmer/test_automerge.git
@@ -11,7 +13,8 @@ env:
   MASTER_BRANCH: main
 
 jobs:
-  merge:
+  automerge:
+    name: Automerge to develop
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
 
