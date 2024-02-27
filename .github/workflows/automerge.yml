@@ -19,14 +19,14 @@ env:
   MASTER_REPO: https://github.com/ljpalmer/test_automerge.git
 
   # replace "master" with your master branch name
-  MASTER_BRANCH: master
+  MASTER_BRANCH: main
 
 jobs:
   merge:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Merge with master
+    - name: Merge with main
       run: |
         git clone ${{env.MY_REPO}} -b ${{env.MY_BRANCH}} tmp
         cd tmp
